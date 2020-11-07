@@ -1,6 +1,7 @@
+#!/bin/bash
+
 nvidia-docker run --rm -it \
-	-p 8888:8888 \
-	-v `pwd`/../src:/src \
-	-v `pwd`/../data:/data \
-	-w /src \
-	supervisely_anpr bash
+			--net=host \
+			-v `pwd`/../src:/workdir/src \
+			-v `pwd`/../data:/data \
+			plate-number-recognition bash

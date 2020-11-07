@@ -1,1 +1,3 @@
-docker build -t supervisely_anpr .
+#!/bin/bash
+
+docker build -t plate-number-recognition .
