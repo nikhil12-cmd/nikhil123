@@ -1,7 +1,7 @@
 [
   {
     "action": "data",
-    "src": ["cityscapes/*"],
+    "src": ["Cityscapes/*"],
     "dst": "$data",
     "settings": {
       "classes_mapping": {
@@ -23,14 +23,14 @@
         "motorcyclegroup": "bg",
         "out of roi": "neutral",
         "parking": "neutral",
-        "person": "bg",
-        "persongroup": "bg",
+        "person": "person",
+        "persongroup": "neutral",
         "pole": "neutral",
         "polegroup": "neutral",
         "rail track": "neutral",
         "rectification border": "neutral",
-        "rider": "bg",
-        "ridergroup": "bg",
+        "rider": "person",
+        "ridergroup": "neutral",
         "road": "road",
         "sidewalk": "bg",
         "sky": "bg",
@@ -187,10 +187,10 @@
   {
     "action": "if",
     "src": ["$data_resized"],
-    "dst": ["$train", "$val"],
+    "dst": ["$val", "$train"],
     "settings": {
       "condition": {
-        "project_datasets": ["cityscapes/aachen"]
+        "project_datasets": ["Cityscapes/frankfurt", "Cityscapes/lindau", "Cityscapes/munster"]
       }
     }
   },
@@ -241,18 +241,20 @@
   {
     "action": "segmentation",
     "src": ["$bg"],
-    "dst": "cityscales_3cl",
+    "dst": "cityscales_4cl",
     "settings": {
       "gt_machine_color": {
         "bg": [0, 0, 0],
         "road": [1, 1, 1],
         "vehicle": [2, 2, 2],
-        "neutral": [3, 3, 3]
+        "person": [3, 3, 3],
+        "neutral": [4, 4, 4]
       },
       "gt_human_color": {
         "bg": [0, 0, 0],
         "road": [0, 184, 217],
         "vehicle": [0, 255, 0],
+        "person": [255, 0, 0],
         "neutral": [255, 255, 255]
       },
       "tag2part": {
