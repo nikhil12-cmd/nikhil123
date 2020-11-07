@@ -1,1 +1,1 @@
-docker build -t tf-1.2-keras-2 .
+docker build -t supervisely_anpr .
